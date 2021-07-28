@@ -1,0 +1,36 @@
+version: "2"
+   
+services:
+  apache:
+    image: localhost:5000/my-apache2:latest
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+    volumes:
+      - .static-html-directory:/static-html-directory
+    ports:
+      - "8081:80"
+    networks: 
+      - apache
+    
+
+  nginx:
+    image: localhost:5000/some-content-nginx:latest
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5    
+    volumes:
+      - .static-html-directory:/static-html-directory
+    ports:
+      - "8082:80"
+    networks: 
+      - nginx
+    
+
+      
+
+networks: 
+  apache:
+    driver: bridge
+  nginx:
+    driver: bridge          
