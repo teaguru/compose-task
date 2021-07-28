@@ -11,8 +11,7 @@ services:
     ports:
       - "8081:80"
     networks: 
-      - apache
-    
+      - apache 
 
   nginx:
     image: localhost:5000/some-content-nginx:latest
@@ -25,9 +24,6 @@ services:
       - "8082:80"
     networks: 
       - nginx
-    
-
-      
 
 networks: 
   apache:
